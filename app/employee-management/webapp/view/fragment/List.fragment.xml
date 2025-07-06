@@ -1,0 +1,100 @@
+<core:FragmentDefinition xmlns:f="sap.f" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:t="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc" height="100%">
+    <VBox id="listContainer" class="listContainer" visible="{VisibleControl>/List}">
+        <HBox id="VBox_footer" justifyContent="SpaceBetween">
+            <Title id="tilte1" text="{i18n>employeeList}" class="title" />
+            <Button id="btnClose" type="Transparent" text="{i18n>close}" press="onPressClose" />
+        </HBox>
+        <VBox id="vbox_table" class="table">
+            <fb:FilterBar id="filterbar" search=".onFilterSearch" filterChange=".onFilterChange"
+                useToolbar="false" afterVariantLoad=".onAfterVariantLoad" showClearOnFB="true"
+                clear=".onClearFilters">
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem id="FilterGroupItem2" visibleInFilterBar="true" name="Role"
+                        label="{i18n>role}" groupName="gr1">
+                        <fb:control>
+                            <MultiComboBox id="MultiComboBox2" name="Role"
+                                selectionChange=".onSelectionChange" items="{Role>/}">
+                                <core:Item id="Item2" key="{Role>ID}" text="{Role>name}" />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem id="FilterGroupItem1" visibleInFilterBar="true"
+                        name="Department" label="Department" groupName="gr1">
+                        <fb:control>
+                            <MultiComboBox id="MultiComboBox1" name="Department"
+                                selectionChange=".onSelectionChange" items="{Department>/}">
+                                <core:Item id="Item" key="{Department>ID}"
+                                    text="{Department>name}" />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+            <Table id="table" mode="MultiSelect" items="{path: 'EmployeeList>/' }"
+                itemPress="onItemPress"
+                fixedLayout="false" growing="true" growingThreshold="100"
+                updateFinished="onSetLabelRole">
+                <columns>
+                    <Column id="col_Name" width="15%" hAlign="Left">
+                        <Label id="l_Name" text="{i18n>name}" textAlign="Left" width="100%" />
+                    </Column>
+                    <Column id="col_Gender" width="10%" hAlign="Center">
+                        <Label id="l_Gender" text="{i18n>gender}" textAlign="Center" width="100%" />
+                    </Column>
+                    <Column id="col_role" hAlign="Center" width="15%">
+                        <Label id="l_role" text="{i18n>role}" textAlign="Center" width="100%" />
+                    </Column>
+                    <Column id="col_Department" width="15%" hAlign="Left">
+                        <Label id="l_Department" text="{i18n>department}" width="100%"
+                            textAlign="Center" />
+                    </Column>
+                    <Column id="col_email" width="15%" hAlign="Left">
+                        <Label id="l_email" text="{i18n>email}" width="100%" textAlign="Center" />
+                    </Column>
+                    <Column id="col_Dob" width="10%" hAlign="Right">
+                        <Label id="l_Dob" text="{i18n>dateOfBirth}" width="100%" textAlign="Center" />
+                    </Column>
+                    <Column id="col_salary" width="10%" hAlign="Right">
+                        <Label id="l_salary" text="{i18n>salary}" width="100%" textAlign="Center" />
+                    </Column>
+                    <Column id="col_delete" width="5%" hAlign="Center">
+                        <Label id="l_delete" width="100%" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="cl_listItem" vAlign="Middle" type="Active">
+                        <cells>
+                            <Text id="txt_Name" class="textTable"
+                                text="{EmployeeList>firstName} {EmployeeList>lastName}"
+                                textAlign="Center" />
+                            <Text id="txt_Gender" class="textTable"
+                                text="{EmployeeList>gender}"
+                                textAlign="Center" />
+                            <tnt:InfoLabel id="txt_role" text="{EmployeeList>role/name}"
+                                class="textLabel" />
+                            <Text id="txt_Department" class="textTable" textAlign="Center"
+                                text="{EmployeeList>department/name}" wrapping="false" />
+                            <Text id="txt_Email" class="textTable" textAlign="Center"
+                                text="{EmployeeList>email}" />
+                            <Text id="txt_DateOfBirth" class="textTable" textAlign="Right"
+                                text="{path: 'EmployeeList>dateOfBirth', formatter:'.formatter.formatDate'}"
+                                wrapping="false" />
+                            <Text id="txt_salary" class="textTable" textAlign="Right"
+                                text="{path: 'EmployeeList>salary', formatter:'.formatter.formatCurrency'}"
+                                wrapping="false" />
+                            <Button id="btn_Delete" icon="sap-icon://decline"
+                                type="Transparent"
+                                press="onItemDelete" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+    </VBox>
+</core:FragmentDefinition>

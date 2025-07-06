@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:f="sap.f" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" height="100%">
+    <HBox id="HBox_home" justifyContent="Center" alignItems="Center" height="100%" class="HBox_home"
+        visible="{VisibleControl>/Home}">
+        <Image id="img_welcome" src="./assets/welcome.gif" width="70%" height="70%" class="img_wel" />
+    </HBox>
+</core:FragmentDefinition>

@@ -1,0 +1,101 @@
+@server = http://localhost:5000/odata/v4
+
+# Employees
+GET {{server}}/ngoc123/Employees?$expand=role,department
+
+###
+GET {{server}}/ngoc123/Employees
+
+### EmployeesInfo
+GET {{server}}/ngoc123/Employees(afa3718c-3308-47ce-b402-5c898ae0ac8f)
+
+###
+POST {{server}}/ngoc123/Employees 
+Content-Type: application/json
+# Authorization: bearer eyJqa3UiOiJodHRwczovL3VhYS5jZi51czEwLTAwMS5oYW5hLm9uZGVtYW5kLmNvbS90b2tlbl9rZXlzIiwia2lkIjoia2V5LTEiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJkNGZlODcxYy02ZWMwLTQzZGItOTAyOS05YjlmNDQ3YzJhYjAiLCJ1c2VyX25hbWUiOiJuZ29jbmd1eWVuQGFiZWFtLmNvbSIsIm9yaWdpbiI6InNhcC5pZHMiLCJpc3MiOiJodHRwczovL3VhYS5jZi51czEwLTAwMS5oYW5hLm9uZGVtYW5kLmNvbS9vYXV0aC90b2tlbiIsInJldm9jYWJsZSI6dHJ1ZSwiY2xpZW50X2lkIjoiY2YiLCJhdWQiOlsiY2xvdWRfY29udHJvbGxlciIsImNmIiwidWFhIiwib3BlbmlkIiwicGFzc3dvcmQiXSwiemlkIjoidWFhIiwiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwidXNlcl9pZCI6ImQ0ZmU4NzFjLTZlYzAtNDNkYi05MDI5LTliOWY0NDdjMmFiMCIsImF6cCI6ImNmIiwic2NvcGUiOlsiY2xvdWRfY29udHJvbGxlci5yZWFkIiwicGFzc3dvcmQud3JpdGUiLCJjbG91ZF9jb250cm9sbGVyLndyaXRlIiwib3BlbmlkIiwidWFhLnVzZXIiXSwiYXV0aF90aW1lIjoxNzUxMTI2MDQyLCJleHAiOjE3NTEyMDg5NzYsImlhdCI6MTc1MTIwNzc3NiwianRpIjoiYTI3Y2FlNjVmYjg5NDU4ZWI3ZTE5NmMxYzY5YzdlOWUiLCJlbWFpbCI6Im5nb2NuZ3V5ZW5AYWJlYW0uY29tIiwicmV2X3NpZyI6IjJjNWY2MmYiLCJjbGllbnRfYXV0aF9tZXRob2QiOiJub25lIiwiY2lkIjoiY2YifQ.KSLE9oawxR5R5DlrdF9liV5K3g54KbB6NQlFHF6jxZ0pRrWMdk4Tv4maTkhpCQ8VTy5KFDMX3QWvdQPu-Fkb1s23mdAqI9lab37MH_jOKZhq__p2huVi9WpUxpPzdeK4hQNfPTWZnrtbLltP53_jgLtVqbMp8WQ3cGlxjp916X02K43rgS0M178k9Ikk5_eIFXcpAerDP7qk2utvHSOdnVkEk2RzCAvrMSbC1cZ_ewNtmnex9T1oAdAqU1fnCNOCWnaV_c4I2CbcYy6lYQjhfkiBoXzlAMHVkN3BKiSP-JQj9ssOZRNaR4Han5rq2sR36OlgHXFbJHdycvycrlYwjA
+
+{
+  "firstName": "J97",
+  "lastName": "Jack",
+  "gender": "Male",
+  "email": "jack.nguyen@example.com",
+  "hireDate": "2022-07-01",
+  "department" : {"ID":"2f3515aa-3b26-4d52-878d-4d197e0c1613"},
+  "role" : {"ID":"32a72aa5-9eca-4823-acf6-a993b2394aed"},
+  "dateOfBirth": "2001-05-15",
+  "currency_code": "USD"
+}
+
+
+###
+
+PATCH {{server}}/ngoc123/Employees(4ba1d7f4-d787-42bf-be1f-0299384258ec)
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Nguyen",
+  "gender": "Male",
+  "email": "john.nguyen@example.com",
+  "hireDate": "2024-07-01",
+  "department" : {"ID":"43867092-6319-41a0-a2ad-bc2e6e1cf288"},
+  "role" : {"ID":"827a15d3-bdca-4fc3-b42d-70cd16542f39"},
+  "dateOfBirth": "1998-05-15",
+  "currency_code": "USD"
+}
+
+###
+DELETE {{server}}/ngoc123/Employees(6d504181-57ff-4bde-a151-e8cf52776ef1)
+
+### Get Role
+GET {{server}}/ngoc123/Roles 
+
+### Get Role
+GET {{server}}/ngoc123/onCalSalary
+
+
+### Post Role
+POST {{server}}/ngoc123/Roles
+Content-Type: application/json
+
+{
+  "name": "Frontend Developer",
+  "baseSalary": 45000
+}
+
+### PATCH Role
+PATCH {{server}}/ngoc123/Roles(b9a89e5a-2b7c-48dd-8a03-4017436d9ae1)
+Content-Type: application/json
+
+{
+  "name": "Software Engineer",
+  "baseSalary": 50000
+}
+
+### Get Departments
+GET {{server}}/ngoc123/Departments
+
+### Post Departments
+POST {{server}}/ngoc123/Departments
+Content-Type: application/json
+
+{
+  "name": "Project Management"
+}
+
+### Patch Departments
+PATCH  {{server}}/ngoc123/Departments(2f3515aa-3b26-4d52-878d-4d197e0c1613)
+Content-Type: application/json
+
+{
+  "name": "IT Support"
+}
+
+### Caculate Employee salary
+POST {{server}}/ngoc123/reCalculateSalary
+Content-Type: application/json
+Authorization: sBearerToken
+
+{
+  "ID": "6d504181-57ff-4bde-a151-e8cf52776ef1"
+}

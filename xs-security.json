@@ -1,0 +1,39 @@
+{
+  "xsappname": "training_ojt_java",
+  "tenant-mode": "dedicated",
+  "oauth2-configuration": {
+    "redirect-uris": [
+     "http://*.localhost:5000/**",
+     "https://*.hana.ondemand.com/**",
+     "https://*.applicationstudio.cloud.sap/**"
+    ]
+   },
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.employee",
+      "description": "employee java"
+     },
+     {
+      "name": "$XSAPPNAME.admin",
+      "description": "admin java"
+     }
+  ],
+  "role-templates": [
+    {
+      "name": "javaViewer",
+      "description": "Viewer role",
+      "scope-references": [
+       "$XSAPPNAME.employee"
+      ]
+     },
+     {
+      "name": "javaAdmin",
+      "description": "Admin role",
+      "scope-references": [
+       "$XSAPPNAME.admin"
+      ]
+     }
+  ],
+  "attributes": []
+}

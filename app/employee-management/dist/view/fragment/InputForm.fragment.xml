@@ -1,0 +1,134 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:upload="sap.m.upload" >
+    <VBox id="input_main" class="detailContainer" width="100%" height="100%" alignItems="Center"
+        visible="{VisibleControl>/InputForm}">
+        <HBox id="input_header" width="100%" justifyContent="SpaceBetween" gap="1rem"
+            class="detailHeader">
+            <Title id="t_emp_input" text="Employee input" class="title" />
+        </HBox>
+        <VBox id="input_content" class="detailContent" width="80%">
+            <HBox id="i_form" class="form" gap="5rem">
+                <!-- Left Container -->
+                <VBox id="i_leftContainer" class="leftContainer" width="50%" gap="1rem">
+                    <HBox id="i_VBoxFirstName" alignItems="Center">
+                        <VBox id="i_VBoxLFirstName" width="40%">
+                            <Label id="i_lFirstName" text="{i18n>firstName}" required="true" />
+                        </VBox>
+                        <VBox id="i_VBoxIFirstName" width="60%">
+                            <Input id="i_iFirstName" type="Text"
+                                placeholder="{i18n>placeholderFirstName}"
+                                value="{EmployeeInput>/firstName}"
+                                enabled="{Edit>/isEdit}" required="true" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="i_VBoxGender" alignItems="Center">
+                        <VBox id="i_VBoxLGender" width="40%">
+                            <Label id="i_lGender" text="{i18n>gender}" required="true" />
+                        </VBox>
+                        <VBox id="i_VBoxIGender" width="60%">
+                            <ComboBox id="i_ComboBoxGender" items="{Gender>/}" width="100%"
+                                selectedKey="{EmployeeInput>/gender}"
+                                placeholder="{i18n>placeholderGender}" required="true">
+                                <core:Item id="i_itemGender" key="{Gender>text}"
+                                    text="{Gender>text}"
+                                    enabled="{Edit>/isEdit}" />
+                            </ComboBox>
+                        </VBox>
+                    </HBox>
+                    <HBox id="i_VBoxEmail" alignItems="Center">
+                        <VBox id="i_VBoxLEmail" width="40%">
+                            <Label id="i_lEmail" text="{i18n>email}" required="true" />
+                        </VBox>
+                        <VBox id="i_VBoxIEmail" width="60%">
+                            <Input id="i_iEmail" type="Text" placeholder="{i18n>placeholderEmail}"
+                                liveChange="onChangeEmail" enabled="{Edit>/isEdit}"
+                                value="{EmployeeInput>/email}" required="true" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="i_VBoxRole" alignItems="Center">
+                        <VBox id="i_VBoxLRole" width="40%">
+                            <Label id="i_lRole" text="{i18n>role}" required="true" />
+                        </VBox>
+                        <VBox id="i_VBoxIRole" width="60%">
+                            <ComboBox id="i_ComboBoxRole" items="{Role>/}" width="100%"
+                                selectedKey="{EmployeeInput>/role/ID}"
+                                placeholder="{i18n>placeholderRole}" required="true">
+                                <core:Item id="i_itemRole" key="{Role>ID}"
+                                    text="{Role>name}"
+                                    enabled="{Edit>/isEdit}" />
+                            </ComboBox>
+                        </VBox>
+                    </HBox>
+                    <HBox id="i_HBoxhireDate" alignItems="Center">
+                        <VBox id="i_VBoxlhireDate" width="40%">
+                            <Label id="i_lhireDate" text="{i18n>hireDate}" required="true" />
+                        </VBox>
+                        <VBox id="i_VBoxhireDate" width="60%">
+                            <DatePicker id="i_hireDate"
+                                value="{EmployeeInput>/hireDate}"
+                                valueFormat="yyyy-MM-dd"
+                                placeholder="{i18n>placeholderHireDate}" enabled="{Edit>/isEdit}"
+                                required="true" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+                <!-- Right Container -->
+                <VBox id="i_rightContainer" class="rightContainer" width="50%" gap="1rem">
+                    <HBox id="i_VBoxLastName" alignItems="Center">
+                        <VBox id="i_VBoxLLastName" width="40%">
+                            <Label id="i_lLastName" text="{i18n>lastName}" required="true" />
+                        </VBox>
+                        <VBox id="i_VBoxILastName" width="60%">
+                            <Input id="i_iLastName" type="Text"
+                                placeholder="{i18n>placeholderLastName}"
+                                value="{EmployeeInput>/lastName}"
+                                enabled="{Edit>/isEdit}" required="true" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="i_DateOfBirth" alignItems="Center">
+                        <VBox id="i_VBoxlDateofBirth" width="40%">
+                            <Label id="i_lDateofBirth" text="{i18n>dateOfBirth}" required="true" />
+                        </VBox>
+                        <VBox id="i_VBoxDateofBirth" width="60%">
+                            <DatePicker id="i_DateofBirth" 
+                                valueFormat="yyyy-MM-dd"
+                                value="{EmployeeInput>/dateOfBirth}" required="true" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="i_VBoxblank1" alignItems="Center" class="blankDetail">
+                        <VBox id="i_VBoxIblank1">
+                            <Input id="i_iblank1" type="Text" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="i_VBoxDepartment" alignItems="Center">
+                        <VBox id="i_VBoxLDepartment" width="40%">
+                            <Label id="i_lDepartment" text="{i18n>department}" required="true" />
+                        </VBox>
+                        <VBox id="i_VBoxIDepartment" width="60%">
+                            <ComboBox id="i_ComboBoxDepartment" items="{Department>/}" width="100%"
+                                placeholder="{i18n>placeholderDepartment}"
+                                selectedKey="{EmployeeInput>/department/ID}" required="true">
+                                <core:Item id="i_itemDepartment" key="{Department>ID}"
+                                    text="{Department>name}" enabled="{Edit>/isEdit}" />
+                            </ComboBox>
+                        </VBox>
+                    </HBox>
+                    <HBox id="i_VBoxblank2" alignItems="Center" class="blankDetail">
+                        <VBox id="i_VBoxIblank2">
+                            <Input id="i_iblank2" type="Text" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </HBox>
+            <HBox id="i_footer" justifyContent="End" gap="1rem">
+                <Button id="btnCloseinput" text="{i18n>close}" type="Transparent"
+                    press="onPressClose" />
+                <Button id="btnCreate" text="{i18n>create}" type="Emphasized" press="onPressCreate" />
+            </HBox>
+        </VBox>
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,149 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:upload="sap.m.upload">
+    <VBox id="detail_main" class="detailContainer" width="100%" height="100%" alignItems="Center"
+        visible="{VisibleControl>/Detail}">
+        <HBox id="header" width="100%" justifyContent="SpaceBetween" gap="1rem"
+            class="detailHeader">
+            <Title id="t_emp_detail" text="Employee Detail" class="title" />
+        </HBox>
+        <VBox id="detail_content" class="detailContent" width="80%">
+            <HBox id="d_form" class="form" gap="5rem">
+                <!-- Left Container -->
+                <VBox id="d_leftContainer" class="leftContainer" width="50%" gap="1rem">
+                    <HBox id="d_VBoxFirstName" alignItems="Center">
+                        <VBox id="d_VBoxLFirstName" width="40%">
+                            <Label id="d_lFirstName" text="{i18n>firstName}" required="true" />
+                        </VBox>
+                        <VBox id="d_VBoxIFirstName" width="60%">
+                            <Input id="d_iFirstName" type="Text"
+                                placeholder="{i18n>placeholderFirstName}"
+                                value="{EmployeeInfo>/firstName}"
+                                enabled="{RoleInfo>/admin}" required="true" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="d_VBoxGender" alignItems="Center">
+                        <VBox id="d_VBoxLGender" width="40%">
+                            <Label id="d_lGender" text="{i18n>gender}" required="true" />
+                        </VBox>
+                        <VBox id="d_VBoxIGender" width="60%">
+                            <ComboBox id="d_ComboBoxGender" items="{Gender>/}" width="100%"
+                                selectedKey="{EmployeeInfo>/gender}"
+                                placeholder="{i18n>placeholderGender}" required="true"
+                                enabled="{RoleInfo>/admin}">
+                                <core:Item id="d_itemGender" key="{Gender>text}"
+                                    text="{Gender>text}"
+                                    enabled="{RoleInfo>/admin}" />
+                            </ComboBox>
+                        </VBox>
+                    </HBox>
+                    <HBox id="d_VBoxEmail" alignItems="Center">
+                        <VBox id="d_VBoxLEmail" width="40%">
+                            <Label id="d_lEmail" text="{i18n>email}" required="true" />
+                        </VBox>
+                        <VBox id="d_VBoxIEmail" width="60%">
+                            <Input id="d_iEmail" type="Text" placeholder="{i18n>placeholderEmail}"
+                                liveChange="onChangeEmail" enabled="{RoleInfo>/admin}"
+                                value="{EmployeeInfo>/email}" required="true" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="d_VBoxRole" alignItems="Center">
+                        <VBox id="d_VBoxLRole" width="40%">
+                            <Label id="d_lRole" text="{i18n>role}" required="true" />
+                        </VBox>
+                        <VBox id="d_VBoxIRole" width="60%">
+                            <ComboBox id="d_ComboBoxRole" items="{Role>/}" width="100%"
+                                selectedKey="{EmployeeInfo>/role/ID}"
+                                placeholder="{i18n>placeholderRole}" required="true"
+                                enabled="{RoleInfo>/admin}">
+                                <core:Item id="d_itemRole" key="{Role>ID}"
+                                    text="{Role>name}"
+                                    enabled="{RoleInfo>/admin}" />
+                            </ComboBox>
+                        </VBox>
+                    </HBox>
+                    <HBox id="d_HBoxhireDate" alignItems="Center">
+                        <VBox id="d_VBoxlhireDate" width="40%">
+                            <Label id="d_lhireDate" text="{i18n>hireDate}" required="true" />
+                        </VBox>
+                        <VBox id="d_VBoxhireDate" width="60%">
+                            <DatePicker id="d_hireDate" change="onChangeHireDate"
+                                value="{EmployeeInfo>/hireDate}" valueFormat="yyyy-MM-dd"
+                                placeholder="{i18n>placeholderHireDate}" enabled="{RoleInfo>/admin}"
+                                required="true" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="d_HBoxSalary" alignItems="Center">
+                        <VBox id="d_VBoxlSalary" width="40%">
+                            <Label id="d_lSalary" text="{i18n>salary}" />
+                        </VBox>
+                        <VBox id="d_VBoxSalary" width="60%">
+                            <Input id="d_Salary" value="{EmployeeInfo>/salary}" editable="false" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+                <!-- Right Container -->
+                <VBox id="d_rightContainer" class="rightContainer" width="50%" gap="1rem">
+                    <HBox id="d_VBoxLastName" alignItems="Center">
+                        <VBox id="d_VBoxLLastName" width="40%">
+                            <Label id="d_lLastName" text="{i18n>lastName}" required="true" />
+                        </VBox>
+                        <VBox id="d_VBoxILastName" width="60%">
+                            <Input id="d_iLastName" type="Text"
+                                placeholder="{i18n>placeholderLastName}"
+                                value="{EmployeeInfo>/lastName}"
+                                enabled="{RoleInfo>/admin}" required="true" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="d_DateOfBirth" alignItems="Center">
+                        <VBox id="d_VBoxlDateofBirth" width="40%">
+                            <Label id="d_lDateofBirth" text="{i18n>dateOfBirth}" required="true" />
+                        </VBox>
+                        <VBox id="d_VBoxDateofBirth" width="60%">
+                            <DatePicker id="d_DateofBirth"
+                                value="{EmployeeInfo>/dateOfBirth}" valueFormat="yyyy-MM-dd"
+                                required="true"
+                                enabled="{RoleInfo>/admin}" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="d_VBoxblank1" alignItems="Center" class="blankDetail">
+                        <VBox id="d_VBoxIblank1">
+                            <Input id="d_iblank1" type="Text" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="d_VBoxDepartment" alignItems="Center">
+                        <VBox id="d_VBoxLDepartment" width="40%">
+                            <Label id="d_lDepartment" text="{i18n>department}" required="true" />
+                        </VBox>
+                        <VBox id="d_VBoxIDepartment" width="60%">
+                            <ComboBox id="d_ComboBoxDepartment" items="{Department>/}" width="100%"
+                                placeholder="{i18n>placeholderDepartment}"
+                                selectedKey="{EmployeeInfo>/department/ID}" required="true"
+                                enabled="{RoleInfo>/admin}">
+                                <core:Item id="d_itemDepartment" key="{Department>ID}"
+                                    text="{Department>name}" enabled="{RoleInfo>/admin}" />
+                            </ComboBox>
+                        </VBox>
+                    </HBox>
+                    <HBox id="d_VBoxblank2" alignItems="Center" class="blankDetail">
+                        <VBox id="d_VBoxIblank2">
+                            <Input id="d_iblank2" type="Text" />
+                        </VBox>
+                    </HBox>
+                    <HBox id="d_HBoxCalSalary">
+                        <Button id="btn_CalSalary" type="Attention" text="{i18n>calSalary}"
+                            press="onPressCalSalary" visible="{RoleInfo>/admin}" />
+                    </HBox>
+                </VBox>
+            </HBox>
+            <HBox id="footerEdit" justifyContent="End" gap="1rem">
+                <Button id="btnCloseDetail" text="{i18n>close}" type="Transparent"
+                    press="onPressCloseDetail" />
+                <Button id="btnUpdate" text="{i18n>update}" type="Emphasized" press="onPressUpdate"
+                    visible="{RoleInfo>/admin}" />
+            </HBox>
+        </VBox>
+    </VBox>
+</core:FragmentDefinition>

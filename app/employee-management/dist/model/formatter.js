@@ -1,0 +1,2 @@
+sap.ui.define([],()=>{"use strict";return{formatDate(r){if(r&&r!=""){let e=new Date(r+"T00:00:00");let n={year:"numeric",month:"long",day:"numeric"};return e.toLocaleString("en-US",n)}return""},formatCurrency:function(r){if(r==null||isNaN(r))return"";return new Intl.NumberFormat(undefined,{style:"currency",currency:"USD",minimumFractionDigits:0}).format(r)}}});
+//# sourceMappingURL=formatter.js.map

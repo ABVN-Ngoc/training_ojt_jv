@@ -1,0 +1,108 @@
+/* root color */
+:root {
+    --white: #ffffff;
+    --black: #1d2d3e;
+    --primary: #0070f2;
+    --dark: #0064d9;
+    --title: #04308f;
+    --gray: #556b82;
+    --backgroundBlue: #ebf8ff;
+}
+
+.page {
+    overflow: hidden !important;
+
+    .toolHeader {
+        height: 2.5rem !important;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem 0 1rem;
+
+        .right,
+        .left {
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .title {
+            color: var(--title);
+        }
+    }
+
+    .tHome {
+        color: var(--primary);
+        font-size: 3rem;
+    }
+}
+
+.HBox_home {
+    .sapMFlexItem {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.dialogContainer {
+    padding: 1rem 10rem;
+    gap: 1rem;
+    background-color: var(--white);
+
+    .header {
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .form {
+        padding: 1rem 1rem 2rem 1rem;
+        gap: 3rem;
+    }
+
+    .footer {
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+}
+
+.listContainer {
+    background-color: var(--white);
+    padding: 2rem 1.5rem;
+
+    .title {
+        color: var(--title);
+    }
+
+    .sapTntInfoLabelInner {
+        font-weight: 300 !important;
+    }
+
+}
+
+.detailContainer {
+    background-color: var(--white);
+    padding: 2rem 3rem;
+
+    .detailHeader {
+        padding: 0 3rem;
+
+        .title {
+            color: var(--title);
+        }
+    }
+
+    .detailContent {
+        padding: 3rem 0;
+
+        .leftContainer,
+        .rightContainer {
+            .blankDetail {
+                visibility: hidden;
+            }
+        }
+    }
+}
+
+.title {
+    color: var(--dark);
+}

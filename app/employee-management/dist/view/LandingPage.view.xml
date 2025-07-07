@@ -1,0 +1,14 @@
+<mvc:View controllerName="employee-management.controller.LandingPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" showHeader="false" class="page">
+        <core:Fragment fragmentName="employee-management.view.fragment.Header" type="XML" />
+        <content>
+            <core:Fragment fragmentName="employee-management.view.fragment.Home" type="XML" />
+            <core:Fragment fragmentName="employee-management.view.fragment.List" type="XML" />
+            <core:Fragment fragmentName="employee-management.view.fragment.InputForm" type="XML" />
+            <core:Fragment fragmentName="employee-management.view.fragment.Detail" type="XML" />
+        </content>
+    </Page>
+</mvc:View>
